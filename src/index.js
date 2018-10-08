@@ -7,7 +7,8 @@ module.exports = function longestConsecutiveLength(array) {
     for (let i = 0; i < sortedArray.length - 1; i++) {
       current = sortedArray[i];
       next = sortedArray[i + 1];
-      if ((current === next - 1)) {
+      
+      if ((next - current === 1) && ( sortedArray[i + 2] -  next === 1)) {
         count++;
       } else if (temp <= count) {
         temp = count;
@@ -15,10 +16,10 @@ module.exports = function longestConsecutiveLength(array) {
         continue;
       }
     }
-      if (count < temp) {
-        return temp;
+    if (count < temp) {
+      return temp + 1;
     } else {
-        return count;
+      return count + 1;
     }
   }
 
